@@ -1,8 +1,210 @@
-/* style.css - unificado para todas as páginas */
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500&display=swap');
+
+/* -------- GLOBAIS -------- */
 body {
   margin: 0;
-  font-family: 'Poppins', Arial, sans-serif;
-  background-color: #0a0a0a;
-  color: white;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0F0F0F;
+  color: #CCCCCC;
+  overflow-x: hidden;
 }
-/* ...restante do CSS completo aqui (omitido por limitação visual)... */
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #1ED760;
+  text-shadow: 0 0 4px #1ED760;
+}
+
+a {
+  color: #1ED760;
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+a:hover {
+  color: #A020F0;
+  text-shadow: 0 0 8px #A020F0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* -------- LOGO -------- */
+.logo {
+  width: 180px;
+  margin: 20px auto;
+  display: block;
+  filter: drop-shadow(0 0 8px #1ED760);
+}
+
+/* -------- MENU -------- */
+.menu-button,
+.menu-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  fill: #CCCCCC;
+  transition: transform 0.3s;
+}
+.menu-button:hover,
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(180deg, #0F0F0F 0%, #1a1a1a 100%);
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+.side-menu.active,
+.side-menu.open {
+  left: 0;
+}
+.side-menu ul li {
+  margin-bottom: 20px;
+}
+.side-menu ul li a {
+  display: block;
+  padding: 12px;
+  font-size: 16px;
+  color: #CCCCCC;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+.side-menu ul li a:hover {
+  color: #1ED760;
+  border-left: 3px solid #1ED760;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* -------- CONTAINERS -------- */
+.page-container,
+.main-container,
+.end-container,
+.intro-container,
+.live-container,
+.games-container,
+.reacts-container {
+  padding: 2rem;
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* -------- COMPONENTES ESPECÍFICOS -------- */
+.camera-placeholder,
+.qr-code,
+.game-window,
+.video-display,
+.chat-area,
+.camera-box,
+.stream-frame {
+  background-color: #1a1a1a;
+  border: 2px dashed #444;
+  border-radius: 8px;
+  color: #CCCCCC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Tamanhos específicos */
+.camera-placeholder, .game-window, .video-display, .stream-frame {
+  width: 80%;
+  height: 300px;
+  margin: 20px auto;
+}
+.chat-area, .camera-box {
+  width: 60%;
+  height: 150px;
+  margin: 20px auto;
+}
+.qr-code {
+  width: 150px;
+  height: 150px;
+  margin: 1rem auto;
+}
+
+/* -------- SOCIALS -------- */
+.socials, .socials-vertical {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.socials-vertical {
+  flex-direction: column;
+  align-items: center;
+}
+
+.socials a, .socials-vertical a {
+  color: #1ED760;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+}
+.socials a:hover, .socials-vertical a:hover {
+  color: #A020F0;
+  transform: scale(1.1);
+}
+
+/* -------- TOP BAR -------- */
+.top-bar {
+  width: 100%;
+  padding: 10px 0;
+  background: #1a1a1a;
+  color: #CCCCCC;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+/* -------- OVERLAY -------- */
+.overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #CCCCCC;
+  backdrop-filter: blur(4px);
+}
+
+/* -------- ANIMAÇÕES -------- */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch {
+  animation: glitch 0.4s infinite;
+}
